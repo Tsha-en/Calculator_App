@@ -1,4 +1,4 @@
-package main
+package calculator
 
 import (
 	"fmt"
@@ -11,7 +11,6 @@ func ValidateExpression(s string) error {
 		return fmt.Errorf("invalid number format: empty expression")
 	}
 
-	// Регулярное выражение для проверки валидности выражения
 	if matched, _ := regexp.MatchString(`^[0-9+\-*/().\s]+$`, s); !matched {
 		return fmt.Errorf("invalid number format: contains invalid characters")
 	}
@@ -19,7 +18,6 @@ func ValidateExpression(s string) error {
 	return nil
 }
 
-// Поиск скобок в выражении
 func FindBrackets(s string) (int, int) {
 	open := -1
 	close := -1
@@ -35,7 +33,7 @@ func FindBrackets(s string) (int, int) {
 }
 
 func MulDivRes(s string) (float64, error) {
-	// Удаляем пробелы из строки
+
 	s = regexp.MustCompile(`\s+`).ReplaceAllString(s, "")
 	terms := []float64{}
 	operators := []string{}
@@ -58,7 +56,6 @@ func MulDivRes(s string) (float64, error) {
 		}
 	}
 
-	// Добавляем последнее число, если оно есть
 	if currentNum != "" {
 		num, err := strconv.ParseFloat(currentNum, 64)
 		if err != nil {
@@ -67,7 +64,6 @@ func MulDivRes(s string) (float64, error) {
 		terms = append(terms, num)
 	}
 
-	// Проверка на наличие операторов и операндов
 	if len(terms) == 0 {
 		return 0, fmt.Errorf("invalid number format: no numbers found")
 	}
@@ -75,7 +71,6 @@ func MulDivRes(s string) (float64, error) {
 		return terms[0], nil
 	}
 
-	// Обрабатываем операции умножения и деления
 	for i := 0; i < len(operators); i++ {
 		if operators[i] == "*" || operators[i] == "/" {
 			if i >= len(terms)-1 {
@@ -90,19 +85,16 @@ func MulDivRes(s string) (float64, error) {
 				terms[i] = terms[i] / terms[i+1]
 			}
 
-			// Удаляем использованный оператор и следующее число
-			terms = append(terms[:i+1], terms[i+2:]...) // Удаляем i+1
+			terms = append(terms[:i+1], terms[i+2:]...)
 			operators = append(operators[:i], operators[i+1:]...)
-			i-- // Уменьшаем i, чтобы не пропустить следующий оператор
+			i--
 		}
 	}
 
-	// Проверка на количество операндов после операций умножения и деления
 	if len(terms) < 1 {
 		return 0, fmt.Errorf("invalid number format: not enough operands after multiplication/division")
 	}
 
-	// Вычисляем результаты для + и -
 	result := terms[0]
 	for i := 0; i < len(operators); i++ {
 		if operators[i] == "+" {
@@ -119,17 +111,14 @@ func MulDivRes(s string) (float64, error) {
 	return result, nil
 }
 
-// Функция для проверки, является ли символ оператором
 func isOperator(ch byte) bool {
 	return ch == '+' || ch == '-' || ch == '*' || ch == '/'
 }
 
-// Обработка выражений с плюсами и минусами
 func PlusMinusExpression(result float64) (float64, error) {
-	return result, nil // Можно расширить функциональность в будущем
+	return result, nil
 }
 
-// Основная функция для вычисления выражения
 func Calc(s string) (float64, error) {
 	if err := ValidateExpression(s); err != nil {
 		return 0, err
@@ -161,19 +150,4 @@ func Calc(s string) (float64, error) {
 	}
 
 	return finalResult, nil
-}
-
-// Тестирование
-func main() {
-
-	var expr string
-	fmt.Scan(&expr)
-
-	result, err := Calc(expr)
-	if err != nil {
-		fmt.Printf("Error calculating '%s': %s\n", expr, err)
-	} else {
-		fmt.Printf("Result of '%s': %f\n", expr, result)
-	}
-
 }
