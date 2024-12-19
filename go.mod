@@ -1,3 +1,3 @@
-module github.com/Tsha-en/Middle-Final-Project
+module github.com/Tsha-en/Calculator_App
 
 go 1.23.3
