@@ -69,8 +69,15 @@ type Request struct {
 }
 
 func CalcHandler(w http.ResponseWriter, r *http.Request) {
+
 	request := new(Request)
 	defer r.Body.Close()
+
+	if r.Method != http.MethodPost {
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
+
 	err := json.NewDecoder(r.Body).Decode(&request)
 	if err != nil {
 		http.Error(w, `{
