@@ -88,7 +88,7 @@ func CalcHandler(w http.ResponseWriter, r *http.Request) {
 
 	} else {
 		fmt.Fprintf(w, `{
-	"result" :" %f"
+	"result": " %f"
 }`, result)
 	}
 }
