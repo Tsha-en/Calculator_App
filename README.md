@@ -17,6 +17,7 @@ go run cmd/main.go
 ```
 4. Чтобы отправить запрос на сервер, можете воспользоваться следующим кодом,
 просто введя его в терминал:
+
 ```java
 curl --location 'localhost/api/v1/calculate' \
 --header 'Content-Type: application/json' \
@@ -24,6 +25,12 @@ curl --location 'localhost/api/v1/calculate' \
   "expression": "2+(2*2)"
 }'
 ```
+Если не работает, попробуй:
+
+```java
+curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/json" -d "{\"expression\": \"1+1\"}"
+```
+
 Но самый лучший и удобыный вариант, воспользоваться программой Postman.
 
 ## Структура проекта
