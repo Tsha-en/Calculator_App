@@ -24,56 +24,55 @@ func assertResult(t *testing.T, input string, expected float64, errExpected bool
 
 func TestCalc(t *testing.T) {
 
-	t.Run("Addition", func(t *testing.T) {
+	t.Run("Сложение", func(t *testing.T) {
 		assertResult(t, "2 + 3", 5, false)
 	})
 
-	t.Run("Subtraction", func(t *testing.T) {
+	t.Run("Вычитание", func(t *testing.T) {
 		assertResult(t, "10 - 4", 6, false)
 	})
 
-	t.Run("Multiplication", func(t *testing.T) {
+	t.Run("Умножение", func(t *testing.T) {
 		assertResult(t, "3 * 4", 12, false)
 	})
 
-	t.Run("Division", func(t *testing.T) {
+	t.Run("Деление", func(t *testing.T) {
 		assertResult(t, "8 / 2", 4, false)
 	})
 
-	t.Run("Complex expression", func(t *testing.T) {
+	t.Run("Все доступные операции", func(t *testing.T) {
 		assertResult(t, "2 + 3 * (4 - 1)", 11, false)
 	})
 
-	t.Run("Division by zero", func(t *testing.T) {
+	t.Run("Деление на ноль", func(t *testing.T) {
 		assertResult(t, "5 / 0", 0, true)
 	})
 
-	t.Run("Expression with spaces", func(t *testing.T) {
+	t.Run("Выражение с пробелами", func(t *testing.T) {
 		assertResult(t, "  4 +  5 * 2 ", 14, false)
 	})
 
-	t.Run("Negative numbers", func(t *testing.T) {
+	t.Run("Отрицательное число", func(t *testing.T) {
 		assertResult(t, "-5 + 3", -2, false)
 	})
 
-	t.Run("Nested parentheses", func(t *testing.T) {
+	t.Run("Несколько скобок", func(t *testing.T) {
 		assertResult(t, "((2 + 3) * (4 + 1))", 25, false)
 	})
 
-	// Тесты для некорректных выражений
-	t.Run("Invalid characters", func(t *testing.T) {
+	t.Run("Неподдерживаемые символы", func(t *testing.T) {
 		assertResult(t, "2 + a", 0, true)
 	})
 
-	t.Run("Mismatched parentheses", func(t *testing.T) {
+	t.Run("Нет закрывающей скобки", func(t *testing.T) {
 		assertResult(t, "(2 + 3", 0, true)
 	})
 
-	t.Run("Empty input", func(t *testing.T) {
+	t.Run("Пустой ввод", func(t *testing.T) {
 		assertResult(t, "", 0, true)
 	})
 
-	t.Run("Extra operators", func(t *testing.T) {
+	t.Run("Двойной плюс", func(t *testing.T) {
 		assertResult(t, "2 ++ 2", 0, true)
 	})
 }

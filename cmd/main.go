@@ -7,10 +7,8 @@ import (
 )
 
 func main() {
-	app := application.New()
-	//app.Run()
-	if app.RunServer() != nil {
+	if application.RunServer() != nil {
 		fmt.Println("Ошибка, не удалось запустить программу.((")
 	}
-	app.RunServer()
+	application.RunServer()
 }
