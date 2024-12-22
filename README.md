@@ -38,7 +38,27 @@ curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/jso
 * cmd - тут точка входа в программу, то есть main.go
 * internal/application - внутренняя логика программы(http, запуск, остановка и т.д.)
 * pkg/calculator - тут файлы с кодом канкуляторя, и файл с тестами для него.
-* примеры - в соответствии с условиями, прилагаются примеры со всеми возможными сценариями 
-выполнения программы.
 * go.mod
 * README.md - вы сейчас тут)
+
+## Примеры с ошибками
+
+### Ошибка 500 не воспроизводится в тестовых условиях, поэтому ее невозможно вызвать искусственно.
+
+### Ошибка 422 
+
+ ```java 
+ curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/json" -d "{\"expression\": \"sd1\"}"
+{
+    "error": "Expression is not valid"
+}%  
+```
+
+### Нормальное выполнение программы
+
+```java
+curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/json" -d "{\"expression\": \"1+1\"}"
+{
+        "result": "2"
+}%                                   
+```

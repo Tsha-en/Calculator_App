@@ -39,7 +39,7 @@ func CalcHandler(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
 	if r.Method != http.MethodPost {
-		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		http.Error(w, "Use POST method", http.StatusUnprocessableEntity)
 		return
 	}
 
