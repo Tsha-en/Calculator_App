@@ -54,7 +54,8 @@ curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/jso
 
 ```java {
     "error": "Internal server error"
-}```
+}
+```
 
 ### Ошибка 422 
 
@@ -66,7 +67,7 @@ curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/jso
  ```java
 {
     "error": "Expression is not valid"
-}%  
+} 
 ```
 
 ### Нормальное выполнение программы
@@ -77,6 +78,6 @@ curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/jso
 ```java
 {
         "result": "2"
-}%                                   
+}                                  
 ```
 По всем вопросам - @Antonenot
