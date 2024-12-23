@@ -48,16 +48,22 @@ curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/jso
 
 ### Ошибка 500 
 ```java
-curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/json" -d "{\"expression\": \"1+1"   
-{
+curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/json" -d "{\"expression\": \"1+1"
+```   
+
+
+```java {
     "error": "Internal server error"
-}
-```
+}```
 
 ### Ошибка 422 
 
  ```java 
  curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/json" -d "{\"expression\": \"sd1\"}"
+ ```
+
+
+ ```java
 {
     "error": "Expression is not valid"
 }%  
@@ -67,6 +73,8 @@ curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/jso
 
 ```java
 curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/json" -d "{\"expression\": \"1+1\"}"
+```
+```java
 {
         "result": "2"
 }%                                   
