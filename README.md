@@ -52,6 +52,7 @@ curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/jso
 {
     "error": "Internal server error"
 }
+```
 
 ### Ошибка 422 
 
