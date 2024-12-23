@@ -51,7 +51,7 @@ curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/jso
 curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/json" -d "{\"expression\": \"1+1"   
 {
     "error": "Internal server error"
-}```
+}
 
 ### Ошибка 422 
 
@@ -70,3 +70,4 @@ curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/jso
         "result": "2"
 }%                                   
 ```
+По всем вопросам - @Antonenot
