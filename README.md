@@ -46,7 +46,12 @@ curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/jso
 
 ## Примеры с ошибками
 
-### Ошибка 500 не воспроизводится в тестовых условиях, поэтому ее невозможно вызвать искусственно.
+### Ошибка 500 
+```java
+curl -X POST http://localhost/api/v1/calculate -H "Content-Type: application/json" -d "{\"expression\": \"1+1"   
+{
+    "error": "Internal server error"
+}```
 
 ### Ошибка 422 
 

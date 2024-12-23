@@ -8,7 +8,7 @@ import (
 
 func ValidateExpression(s string) error {
 	if s == "" {
-		return fmt.Errorf("invalid number format: empty expression")
+		return fmt.Errorf("invalid format")
 	}
 
 	if matched, _ := regexp.MatchString(`^[0-9+\-*/().\s]+$`, s); !matched {
